@@ -31,7 +31,7 @@ class FloorCleaningAgent:
         self.col = 0  # startkolom (links)
 
         # Voorbeeld: grid aanmaken (alle tegels beginnen vuil)
-        # self.grid = [[False for _ in range(cols)] for _ in range(rows)]
+        self.grid = [[False for _ in range(cols)] for _ in range(rows)]
 
     # ---------- Basisbewegingen ----------
 
@@ -46,25 +46,40 @@ class FloorCleaningAgent:
     def move_down(self):
         """Verplaats de robot één tegel omlaag (rij +1)."""
         # TODO: implementeer
+        if self.row < self.rows - 1:
+            self.row += 1
+            print(f"Verplaats naar ({self.row}, {self.col})")
+        else:
+            print("Kan niet omlaag: rand bereikt")
         pass
 
     def move_left(self):
         """Verplaats de robot één tegel naar links (kolom -1)."""
         # TODO: implementeer
+        if self.col > 0:
+            self.col -= 1
+            print(f"Verplaats naar ({self.row}, {self.col})")
+        else:
+            print("Kan niet naar links: rand bereikt")
         pass
 
     def move_right(self):
         """Verplaats de robot één tegel naar rechts (kolom +1)."""
         # TODO: implementeer
+        if self.col < self.cols - 1:
+            self.col += 1
+            print(f"Verplaats naar ({self.row}, {self.col})")
+        else:
+            print("Kan niet naar rechts: rand bereikt")
         pass
 
     # ---------- Stofzuigen ----------
 
     def clean_tile(self):
         """Stofzuig de huidige tegel (maak hem proper)."""
-        # TODO: markeer huidige tegel als proper
-        # print(f"Tegel ({self.row}, {self.col}) is nu proper!")
-        pass
+
+        self.grid[self.row][self.col] = True
+        print(f"Tegel ({self.row}, {self.col}) is nu proper!")
 
     # ---------- Strategie ----------
 
